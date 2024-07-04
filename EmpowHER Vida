@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook-like Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Facebook-like Page</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Friends</a></li>
+                    <li><a href="#">Messages</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <aside>
+                <h3>Friends</h3>
+                <ul>
+                    <li><a href="#">Friend 1</a></li>
+                    <li><a href="#">Friend 2</a></li>
+                    <li><a href="#">Friend 3</a></li>
+                    <li><a href="#">Friend 4</a></li>
+                </ul>
+            </aside>
+            <section class="feed">
+                <div class="post">
+                    <div class="post-header">
+                        <img src="profile-pic.jpg" alt="Profile Picture">
+                        <h4>John Doe</h4>
+                    </div>
+                    <p>This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="post-actions">
+                        <button>Like</button>
+                        <button>Comment</button>
+                        <button>Share</button>
+                    </div>
+                </div>
+                <!-- More posts would follow here -->
+            </section>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Facebook-like Page. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+main {
+    margin-top: 20px;
+}
+
+aside {
+    width: 25%;
+    float: left;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+aside h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+.feed {
+    width: 75%;
+    float: right;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.post {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+.post-actions button {
+    background-color: #f0f2f5;
+    color: #3b5998;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #3b5998;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paid Page</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #paypal-button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unlock Premium Content</h1>
+        <p>Get access to exclusive content for a one-time payment.</p>
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '10.00' // Example amount
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    // Optional: Redirect or update UI after successful payment
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
+<?php
+// Handle PayPal IPN (Instant Payment Notification) or other server-side processing
+// For simplicity, this example assumes direct client-side integration with PayPal SDK
+
+// Example: Log payment details to a file or database
+$paymentDetails = json_encode($_POST); // Store payment details as JSON
+file_put_contents('payment_log.txt', $paymentDetails . PHP_EOL, FILE_APPEND);
+
+// Optional: Handle database updates, user access, etc.
+
+// Respond to PayPal IPN with HTTP 200 OK status
+http_response_code(200);
+?>
+<?php
+// Step 1: Validate incoming request
+// Example: Ensure the request is POST and contains required parameters
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['payment_id']) || empty($_POST['amount'])) {
+    http_response_code(400);
+    die('Invalid request');
+}
+
+// Step 2: Verify payment details (simplified for illustration)
+$payment_id = $_POST['payment_id'];
+$amount = $_POST['amount'];
+
+// Example: Validate payment details against your database or PayPal API
+// Replace with actual validation logic
+$isValidPayment = validatePayment($payment_id, $amount);
+
+if (!$isValidPayment) {
+    http_response_code(400);
+    die('Invalid payment details');
+}
+
+// Step 3: Process payment securely (simplified for illustration)
+$paymentSuccessful = processPayment($payment_id, $amount);
+
+if ($paymentSuccessful) {
+    // Optional: Update database or grant access to paid content
+    // Example: grantAccess($user_id);
+
+    // Optional: Log payment details securely
+    logPayment($payment_id, $amount);
+
+    // Respond with success message
+    http_response_code(200);
+    echo 'Payment successful';
+} else {
+    http_response_code(500);
+    echo 'Payment processing failed';
+}
+
+// Function to validate payment (replace with actual logic)
+function validatePayment($payment_id, $amount) {
+    // Validate against your database or external payment processor (e.g., PayPal)
+    // Replace with actual validation logic
+    // Simulated validation logic
+    return true;
+}
+
+// Function to process payment (replace with actual logic)
+function processPayment($payment_id, $amount) {
+    // Simulated successful payment processing
+    // Replace with actual payment gateway integration (e.g., PayPal SDK)
+    // Simulated processing logic
+    return true;
+}
+
+// Function to log payment details securely (replace with actual logging mechanism)
+function logPayment($payment_id, $amount) {
+    // Log payment details securely to a file or database
+    // Replace with actual logging mechanism (e.g., encrypted storage)
+    $logMessage = "Payment ID: $payment_id | Amount: $amount";
+    file_put_contents('payment_log.txt', $logMessage . PHP_EOL, FILE_APPEND);
+}
+?>
+
